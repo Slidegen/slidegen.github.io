@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slidegen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .logo-text {
+            color: #fcd34d; /* Tailwind yellow-400 */
+        }
+        .main-button {
+            background-color: #fcd34d; /* Tailwind yellow-400 */
+            color: #1f2937; /* Tailwind gray-900 */
+            padding: 0.5rem 1.5rem; /* Tailwind px-6 py-2 */
+            border-radius: 0.375rem; /* Tailwind rounded-md */
+            font-size: 1.25vw; /* Responsive font size */
+            font-weight: 700; /* Tailwind font-bold */
+            margin-top: 1rem; /* Tailwind mt-4 */
+        }
+        .main-text {
+            color: #fcd34d; /* Tailwind yellow-400 */
+            font-size: 2.25vw; /* Responsive font size */
+            font-weight: 700; /* Tailwind font-bold */
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+
+        }
+        .text-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10%;
+            height: 100%;
+            width: 100%; /* Full width on mobile */
+            text-align: center; /* Center text on mobile */
+        }
+        @media (min-width: 1024px) { /* Tailwind lg breakpoint */
+            .text-container {
+                width: 50%; /* Half the viewport on desktop */
+                justify-content: flex-start; /* Align text to the left on desktop */
+                text-align: left; /* Left align text on desktop */
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col h-screen">
+    <header class="flex justify-start p-10 fixed top-0 w-full z-10">
+        <h1 class="logo-text text-2xl">
+            Slidegen
+        </h1>
+    </header>
+    <main class="flex-grow flex flex-col lg:flex-row items-center justify-center px-10 lg:items-start lg:pt-32 mt-20">
+        <div class="text-container">
+            <div class="w-full lg:w-auto">
+                <p class="main-text" id="mainText">
+                    Generate Amazing Graphics from simple prompts
+                </p>
+                <button class="main-button">
+                    Try it now!
+                </button>
+            </div>
+        </div>
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://placehold.co/300x300" class="hidden lg:block" />
+    </main>
+    <footer class="p-10">
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://placehold.co/300x300" class="mx-auto lg:hidden" />
+    </footer>
+    <script>
+        function adjustFontSize() {
+            const mainText = document.getElementById('mainText');
+            let fontSize = parseFloat(window.getComputedStyle(mainText).fontSize);
+            const parentWidth = mainText.parentElement.offsetWidth;
+
+            // Increase font size if text is smaller than its container
+            while (mainText.scrollWidth < parentWidth && fontSize < 5) {
+                fontSize += 0.1;
+                mainText.style.fontSize = fontSize + 'vw';
+            }
+
+            // Decrease font size if text overflows its container
+            while (mainText.scrollWidth > parentWidth && fontSize > 1) {
+                fontSize -= 0.1;
+                mainText.style.fontSize = fontSize + 'vw';
+            }
+        }
+
+        window.onload = adjustFontSize;
+        window.onresize = adjustFontSize;
+    </script>
+</body>
+</html>

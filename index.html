@@ -44,6 +44,18 @@
                 text-align: left; /* Left align text on desktop */
                 margin-top: 0;
             }
+
+            .image-container {
+                width: 50%; /* Half the viewport on desktop */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .image-container img {
+                max-width: 100%;
+                max-height: calc(100vh - 20rem); /* Subtracting header and footer height */
+                object-fit: contain; /* Ensures the image is fully visible */
+            }
         }
     </style>
 </head>
@@ -64,10 +76,12 @@
                 </button>
             </div>
         </div>
-        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://placehold.co/300x300" class="hidden lg:block" />
+        <div class="image-container hidden lg:flex">
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="image.png" class="hidden lg:block" />
+        </div>
     </main>
     <footer class="p-10">
-        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://placehold.co/300x300" class="mx-auto lg:hidden" />
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="image.png" class="mx-auto lg:hidden" />
     </footer>
     <script>
         function adjustFontSize() {

@@ -16,17 +16,23 @@
         .main-button {
             background-color: #fcd34d; /* Tailwind yellow-400 */
             color: #1f2937; /* Tailwind gray-900 */
-            padding: 0.5rem 1.5rem; /* Tailwind px-6 py-2 */
+            padding: 1.2vh 4.5vw; /* Tailwind px-6 py-2 */
             border-radius: 0.375rem; /* Tailwind rounded-md */
-            font-size: 1.25vw; /* Responsive font size */
+            font-size: 2.25vw; /* Responsive font size */
             font-weight: 700; /* Tailwind font-bold */
             margin-top: 1rem; /* Tailwind mt-4 */
         }
+
+        .main-center {
+
+        padding-top: 8rem;
+
+        }
         .main-text {
             color: #fcd34d; /* Tailwind yellow-400 */
-            font-size: 2.25vw; /* Responsive font size */
+            font-size: 5.25vw; /* Responsive font size */
             font-weight: 700; /* Tailwind font-bold */
-            margin-bottom: 1rem; /* Tailwind mb-4 */
+            margin-bottom: 2vh; /* Tailwind mb-4 */
 
         }
         .text-container {
@@ -38,6 +44,20 @@
             text-align: center; /* Center text on mobile */
         }
         @media (min-width: 1024px) { /* Tailwind lg breakpoint */
+
+
+        .main-center {
+
+        padding-top: 6rem;
+
+        }
+            .main-text {
+
+            font-size: 3.55vw;
+            margin-bottom: 5vh;
+
+
+            }
             .text-container {
                 width: 50%; /* Half the viewport on desktop */
                 justify-content: flex-start; /* Align text to the left on desktop */
@@ -65,15 +85,15 @@
             Slidegen
         </h1>
     </header>
-    <main class="flex-grow flex flex-col lg:flex-row items-center justify-center px-10 lg:items-start lg:pt-32 mt-20">
+    <main class="flex-grow flex flex-col lg:flex-row items-center justify-center px-10 lg:items-start mt-20 main-center">
         <div class="text-container">
             <div class="w-full lg:w-auto">
                 <p class="main-text" id="mainText">
                     Generate Amazing Graphics from simple prompts
                 </p>
-                <button class="main-button">
-                    Try it now!
-                </button>
+                <a href="https://www.youtube.com" target="_blank" class="main-button">
+            Try it now!
+        </a>
             </div>
         </div>
         <div class="image-container hidden lg:flex">
@@ -91,13 +111,13 @@
 
             // Increase font size if text is smaller than its container
             while (mainText.scrollWidth < parentWidth && fontSize < 5) {
-                fontSize += 0.1;
+                fontSize += 0.001;
                 mainText.style.fontSize = fontSize + 'vw';
             }
 
             // Decrease font size if text overflows its container
             while (mainText.scrollWidth > parentWidth && fontSize > 1) {
-                fontSize -= 0.1;
+                fontSize -= 0.001;
                 mainText.style.fontSize = fontSize + 'vw';
             }
         }

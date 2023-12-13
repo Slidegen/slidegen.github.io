@@ -113,6 +113,12 @@
             max-height: 50vh;
         }
 
+        .circle-image {
+
+        border-radius: 50%; /* Makes the image circular */
+
+        }
+
         @media (min-width: 1024px) { /* Tailwind lg breakpoint */
             .main-center {
                 padding-top: 6rem;
@@ -153,6 +159,36 @@
                 max-height: 70vh;
             }
         }
+
+
+        .slide {
+            max-width: 100%;
+            max-height: calc(100vh - 20rem); /* Subtracting header and footer height */
+            object-fit: contain; /* Ensures the image is fully visible */
+            display: none; /* Hide all images by default */
+        }
+
+        .slide.active {
+            display: block; /* Only the active slide is shown */
+        }
+
+
+        @media (min-width: 1024px) {
+    .footer-slide, .footer-slide.active {
+        display: none !important; /* Use !important to ensure override */
+    }
+}
+
+        .footer-slide {
+            max-width: 100%; /* Adjust if necessary */
+            display: none; /* Hide all images by default */
+        }
+
+        .footer-slide.active {
+            display: block; /* Only the active slide is shown */
+        }
+
+
     </style>
 </head>
 <body class="bg-gray-900 text-white flex flex-col h-screen">
@@ -182,11 +218,15 @@
             </div>
         </div>
         <div class="image-container hidden lg:flex">
-        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702406579/Slidegen/image_txbnoz.png" class="hidden lg:block" />
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702406579/Slidegen/image_txbnoz.png" class="slide active" />
+
+        <img class="slide circle-image" src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702460739/Slidegen/image_20231213_082010_no_bg_q1ebkp.png" alt="Image 2" />
+
         </div>
     </main>
     <footer class="p-10">
-        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702406579/Slidegen/image_txbnoz.png" class="mx-auto lg:hidden" />
+        <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702406579/Slidegen/image_txbnoz.png" class="mx-auto lg:hidden footer-slide active" />
+        <img class="mx-auto lg:hidden footer-slide circle-image" src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702460739/Slidegen/image_20231213_082010_no_bg_q1ebkp.png" alt="Image 2" />
     </footer>
     <!-- The Modal -->
     <div id="newsletterModal" class="modal">
@@ -277,5 +317,52 @@ window.onload = function() {
 };
 
 </script>
+
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const numberOfSlides = slides.length;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % numberOfSlides;
+        showSlide(currentSlide);
+    }
+
+    // Show the first slide initially
+    showSlide(currentSlide);
+
+    // Change image every 3 seconds
+    setInterval(nextSlide, 3000);
+</script>
+
+
+<script>
+    let currentFooterSlide = 0;
+    const footerSlides = document.querySelectorAll('.footer-slide');
+    const numberOfFooterSlides = footerSlides.length;
+
+    function showFooterSlide(index) {
+        footerSlides.forEach(slide => slide.classList.remove('active'));
+        footerSlides[index].classList.add('active');
+    }
+
+    function nextFooterSlide() {
+        currentFooterSlide = (currentFooterSlide + 1) % numberOfFooterSlides;
+        showFooterSlide(currentFooterSlide);
+    }
+
+    // Show the first footer slide initially
+    showFooterSlide(currentFooterSlide);
+
+    // Change footer image every 3 seconds
+    setInterval(nextFooterSlide, 3000);
+</script>
+
 </body>
 </html>

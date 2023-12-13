@@ -181,39 +181,8 @@
         window.onload = function() {
             setTimeout(function() {
                 modal.style.display = "block";
-            }, 2000);
+            }, 1200);
         }
-
-
-            // Function to check for the submission message
-            function checkForSubmissionMessage() {
-                var iframe = document.getElementById('newsletterIframe');
-                var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-
-                // Check if the submission message is present
-                var submissionMessage = iframeDocument.querySelector('.sib-form-message-panel__inner-text');
-                if (submissionMessage) {
-                    // Close the modal
-                    document.getElementById('newsletterModal').style.display = 'none';
-                }
-            }
-
-            var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.addedNodes.length) {
-                    checkForSubmissionMessage();
-                }
-            });
-        });
-
-        // Start observing the iframe for changes in the DOM
-        var iframe = document.getElementById('newsletterIframe');
-
-        iframe.onload = function() {
-            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-            observer.observe(iframeDocument.body, { childList: true, subtree: true });
-        };
-
 
     </script>
     <script>

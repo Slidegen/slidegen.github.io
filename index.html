@@ -26,16 +26,13 @@
         }
 
         .main-center {
-
-        padding-top: 8rem;
-
+            padding-top: 8rem;
         }
         .main-text {
             color: #fcd34d; /* Tailwind yellow-400 */
             font-size: 5.25vw; /* Responsive font size */
             font-weight: 700; /* Tailwind font-bold */
             margin-bottom: 2vh; /* Tailwind mb-4 */
-
         }
         .text-container {
             display: flex;
@@ -46,19 +43,12 @@
             text-align: center; /* Center text on mobile */
         }
         @media (min-width: 1024px) { /* Tailwind lg breakpoint */
-
-
-        .main-center {
-
-        padding-top: 6rem;
-
-        }
+            .main-center {
+                padding-top: 6rem;
+            }
             .main-text {
-
-            font-size: 3.55vw;
-            margin-bottom: 5vh;
-
-
+                font-size: 3.55vw;
+                margin-bottom: 5vh;
             }
             .text-container {
                 width: 50%; /* Half the viewport on desktop */
@@ -66,7 +56,6 @@
                 text-align: left; /* Left align text on desktop */
                 margin-top: 0;
             }
-
             .image-container {
                 width: 50%; /* Half the viewport on desktop */
                 display: flex;
@@ -77,6 +66,60 @@
                 max-width: 100%;
                 max-height: calc(100vh - 20rem); /* Subtracting header and footer height */
                 object-fit: contain; /* Ensures the image is fully visible */
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            backdrop-filter: blur(8px); /* Blur the background */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 5% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 540px; /* Maximum width for the iframe */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        /* Responsive iframe styles */
+        iframe {
+            width: 100%;
+            height: 50vh;
+            max-height: 50vh;
+        }
+        @media (min-width: 1024px) { /* Tailwind lg breakpoint */
+            iframe {
+                height: 70vh; /* Adjusted height for desktop */
+                max-height: 70vh;
             }
         }
     </style>
@@ -103,8 +146,8 @@
                     Generate Amazing Graphics from simple prompts
                 </p>
                 <a href="https://bit.ly/slidegen-huggingface" target="_blank" class="main-button">
-            Try it now!
-        </a>
+                    Try it now!
+                </a>
             </div>
         </div>
         <div class="image-container hidden lg:flex">
@@ -114,6 +157,65 @@
     <footer class="p-10">
         <img alt="A graphic creation tool logo with a stylized pencil and color palette, encapsulated within a yellow circle, with the text 'SIDEGEN - A GRAPHIC CREATION TOOL' below it." src="https://res.cloudinary.com/dol2onsxl/image/upload/v1702406579/Slidegen/image_txbnoz.png" class="mx-auto lg:hidden" />
     </footer>
+    <!-- The Modal -->
+    <div id="newsletterModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('newsletterModal').style.display='none'">&times;</span>
+            <iframe id="newsletterIframe" src="https://09a828c3.sibforms.com/serve/MUIFACbg7_XkJPve2XGT6oSxI1zqX1g_yIfnj4TX_-Z8OJfxoiRO0DWJqAB3u7-N4zCaKy1Bf71q8XK1koueGMcVCFkdgyLzFY7AlPbDTfs3QlThhKkKz6VVWrdbJYeb1I9vaXz73H3Ek39QNbbp8Jk2W1VBuegspsfv_WyUz47E3YufGkMjhM1_OrY_tmBR9NzQFWu4fGr8rDqC" frameborder="0" allowfullscreen></iframe>
+              </div>
+    </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('newsletterModal');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Open the modal after 2 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                modal.style.display = "block";
+            }, 2000);
+        }
+
+
+            // Function to check for the submission message
+            function checkForSubmissionMessage() {
+                var iframe = document.getElementById('newsletterIframe');
+                var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+                // Check if the submission message is present
+                var submissionMessage = iframeDocument.querySelector('.sib-form-message-panel__inner-text');
+                if (submissionMessage) {
+                    // Close the modal
+                    document.getElementById('newsletterModal').style.display = 'none';
+                }
+            }
+
+            var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length) {
+                    checkForSubmissionMessage();
+                }
+            });
+        });
+
+        // Start observing the iframe for changes in the DOM
+        var iframe = document.getElementById('newsletterIframe');
+
+        iframe.onload = function() {
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            observer.observe(iframeDocument.body, { childList: true, subtree: true });
+        };
+
+
+    </script>
     <script>
         function adjustFontSize() {
             const mainText = document.getElementById('mainText');
@@ -133,7 +235,6 @@
             }
         }
 
-        window.onload = adjustFontSize;
         window.onresize = adjustFontSize;
     </script>
 </body>

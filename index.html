@@ -42,32 +42,6 @@
             width: 100%; /* Full width on mobile */
             text-align: center; /* Center text on mobile */
         }
-        @media (min-width: 1024px) { /* Tailwind lg breakpoint */
-            .main-center {
-                padding-top: 6rem;
-            }
-            .main-text {
-                font-size: 3.55vw;
-                margin-bottom: 5vh;
-            }
-            .text-container {
-                width: 50%; /* Half the viewport on desktop */
-                justify-content: flex-start; /* Align text to the left on desktop */
-                text-align: left; /* Left align text on desktop */
-                margin-top: 0;
-            }
-            .image-container {
-                width: 50%; /* Half the viewport on desktop */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .image-container img {
-                max-width: 100%;
-                max-height: calc(100vh - 20rem); /* Subtracting header and footer height */
-                object-fit: contain; /* Ensures the image is fully visible */
-            }
-        }
 
         /* Modal styles */
         .modal {
@@ -87,8 +61,8 @@
             margin: 5% auto; /* 5% from the top and centered */
             padding: 0.2vw;
             border: 1px solid #000000;
-            width: 80%; /* Could be more or less, depending on screen size */
-            max-width: 540px; /* Maximum width for the iframe */
+            width: 90%; /* Could be more or less, depending on screen size */
+            max-width: 70vw; /* Maximum width for the iframe */
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             animation-name: animatetop;
             animation-duration: 0.4s;
@@ -138,6 +112,41 @@
             height: 50vh;
             max-height: 50vh;
         }
+
+        @media (min-width: 1024px) { /* Tailwind lg breakpoint */
+            .main-center {
+                padding-top: 6rem;
+            }
+
+            .modal-content {
+
+            max-width: 40vw; /* Maximum width for the iframe */
+
+        }
+            .main-text {
+                font-size: 3.55vw;
+                margin-bottom: 5vh;
+            }
+            .text-container {
+                width: 50%; /* Half the viewport on desktop */
+                justify-content: flex-start; /* Align text to the left on desktop */
+                text-align: left; /* Left align text on desktop */
+                margin-top: 0;
+            }
+            .image-container {
+                width: 50%; /* Half the viewport on desktop */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .image-container img {
+                max-width: 100%;
+                max-height: calc(100vh - 20rem); /* Subtracting header and footer height */
+                object-fit: contain; /* Ensures the image is fully visible */
+            }
+        }
+
+
         @media (min-width: 1024px) { /* Tailwind lg breakpoint */
             iframe {
                 height: 70vh; /* Adjusted height for desktop */

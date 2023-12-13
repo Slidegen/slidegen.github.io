@@ -83,10 +83,10 @@
             backdrop-filter: blur(8px); /* Blur the background */
         }
         .modal-content {
-            background-color: #fefefe;
+            background-color: #1F2737;
             margin: 5% auto; /* 5% from the top and centered */
             padding: 20px;
-            border: 1px solid #888;
+            border: 1px solid #000000;
             width: 80%; /* Could be more or less, depending on screen size */
             max-width: 540px; /* Maximum width for the iframe */
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -109,6 +109,28 @@
             from {top: -300px; opacity: 0}
             to {top: 0; opacity: 1}
         }
+
+
+        /* Style for scrollbar within the modal */
+        ::-webkit-scrollbar {
+            width: 2px; /* Width of the scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2D3A51; /* Background of the scrollbar track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.6); /* Color of the scrollbar thumb */
+            border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+            border: 3px solid #2D3A51; /* Creates a transparent effect with the same color as the track */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly lighter scrollbar thumb on hover */
+        }
+
+
 
         /* Responsive iframe styles */
         iframe {
@@ -162,7 +184,7 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('newsletterModal').style.display='none'">&times;</span>
-            <iframe id="newsletterIframe" src="https://09a828c3.sibforms.com/serve/MUIFACbg7_XkJPve2XGT6oSxI1zqX1g_yIfnj4TX_-Z8OJfxoiRO0DWJqAB3u7-N4zCaKy1Bf71q8XK1koueGMcVCFkdgyLzFY7AlPbDTfs3QlThhKkKz6VVWrdbJYeb1I9vaXz73H3Ek39QNbbp8Jk2W1VBuegspsfv_WyUz47E3YufGkMjhM1_OrY_tmBR9NzQFWu4fGr8rDqC" frameborder="0" allowfullscreen></iframe>
+            <iframe id="newsletterIframe" src="https://09a828c3.sibforms.com/serve/MUIFAPn-oYtkNSM0_K69XF-VbQELSZ98Z4whq1n1LBBkSrDO_w-zjhQ0Nh8vAk1xyta8WtA0M0YZjsMw3OlQKeLjTCNK0lrCv1Ot5qePgIbUe6TI-di4mkGzp_6n3CNEXCTGW_4Rm9q3GfpAvmDal0-CmfArRou9TKIpvxdxVRJOEfqs05-A8wgmkygKpbktX5MNar8Fa0hf0Uiy" frameborder="0" allowfullscreen></iframe>
               </div>
     </div>
 

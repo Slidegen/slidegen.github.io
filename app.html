@@ -10,20 +10,43 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <style>
-        /* Your existing styles */
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-        .logo-text, .main-text {
-            color: #fcd34d; /* Tailwind yellow-400 */
-        }
-        /* Additional styling, including your original CSS with modifications as necessary */
-        iframe {
-            width: 100%;
-            height: 70vh;
-            border: none;
-        }
-    </style>
+    /* Your existing styles */
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .logo-text, .main-text {
+        color: #fcd34d; /* Tailwind yellow-400 */
+    }
+    iframe {
+        width: 100%;
+        height: 70vh;
+        border: none;
+    }
+
+    /* Styles for the iframe scrollbar to be dark */
+    iframe::-webkit-scrollbar {
+        width: 12px; /* Width of the scrollbar */
+    }
+
+    iframe::-webkit-scrollbar-track {
+        background: #2D2D2D; /* Dark color for the track */
+    }
+
+    iframe::-webkit-scrollbar-thumb {
+        background-color: #555; /* Darker color for the thumb */
+        border-radius: 6px; /* Rounded corners for the thumb */
+        border: 3px solid #2D2D2D; /* Slight border to match the track color */
+    }
+
+    iframe::-webkit-scrollbar-thumb:hover {
+        background-color: #666; /* Slightly lighter color on hover */
+    }
+
+    iframe::-webkit-scrollbar-thumb:active {
+        background-color: #777; /* Even lighter color when active */
+    }
+</style>
+
 </head>
 <body class="bg-gray-900 text-white flex flex-col h-screen">
     <header class="flex justify-between items-center p-10 fixed top-0 w-full z-10">
